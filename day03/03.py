@@ -1,11 +1,9 @@
-def parse(ls):
-    return "".join(str(l) for l in ls)
+lines = [[int(i) for i in x.strip()] for x in open("input")]
+gamma = epsilon = ""
+for bin in zip(*lines):
+    g = round(sum(bin) / len(bin))
+    e = 1 - g
+    gamma += str(g)
+    epsilon += str(e)
 
-nums = [str(line.strip()) for line in open("input")]
-gamma = epsilon = list() 
-for bin in nums:
-    map = dict(zip(['0', '1'], [0 for _ in range(2)]))
-    for x in list(bin):
-        map[x] += 1
-    gamma.append(1), epsilon.append(0) if map['1'] > map['0'] else gamma.append(0), epsilon.append(1)
-print(int(parse(gamma), 2) * int(parse(epsilon), 2))
+print(int(gamma, 2) * int(epsilon, 2))
