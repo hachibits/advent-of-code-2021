@@ -1,1 +1,4 @@
 */sample.in
+*.swp
+*.py.*
+*.py~
